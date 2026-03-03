@@ -11,6 +11,16 @@ public class TaskRepository implements AutoCloseable {
     private final Connection connection;
 
     public TaskRepository() throws SQLException {
+        try {
+            // Explicit load keeps this starter compatible across more JDK/IDE setups.
+            Class.forName("org.sqlite.JDBC");
+        } catch (ClassNotFoundException e) {
+            throw new SQLException(
+                "SQLite JDBC driver not found. Add lib/sqlite-jdbc-3.46.0.0.jar to the classpath.",
+                e
+            );
+        }
+
         this.connection = DriverManager.getConnection(DB_URL);
     }
 

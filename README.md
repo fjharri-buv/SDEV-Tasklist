@@ -35,3 +35,16 @@ Expected output at start:
 ```
 
 The database file (`app.db`) is created automatically in the project root.
+
+
+## Troubleshooting: "No suitable driver found"
+
+If you see:
+
+`java.sql.SQLException: No suitable driver found for jdbc:sqlite:app.db`
+
+then the SQLite JDBC jar is not on the runtime classpath.
+
+- IntelliJ: ensure `lib/sqlite-jdbc-3.46.0.0.jar` is added as a module dependency.
+- Terminal: run `./run.sh` (it includes the jar in `-cp`).
+- If needed, reload/sync the IntelliJ project after adding the jar.
