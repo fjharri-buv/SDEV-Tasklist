@@ -1,1 +1,0 @@
-Place `sqlite-jdbc-3.46.0.0.jar` in this folder.

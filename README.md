@@ -1,50 +1,36 @@
-# SQLite CRUD in Java (No Maven/Gradle)
+# SQLite Task List (Maven)
 
-This is a starter skeleton for the classroom practical. Students only need to open the project in IntelliJ and complete the TODO methods.
+This project has been rebuilt as a Maven application so students can simply open it and click **Run** on `Main`.
+
+## What this setup gives you
+
+- No manual jar downloads.
+- SQLite JDBC is pulled automatically from Maven Central.
+- The database file (`app.db`) is created automatically in the project root when the app starts.
+- The `tasks` table is created automatically if it does not already exist.
 
 ## Project layout
 
-- `src/Main.java` - starter flow and console output checks.
-- `src/TaskRepository.java` - all CRUD TODOs for Parts B-E plus optional extension.
-- `lib/` - place `sqlite-jdbc` jar here.
-- `run.sh` - compile and run from terminal without Maven/Gradle.
+- `pom.xml` - Maven project config and dependencies.
+- `src/main/java/Main.java` - demo app flow.
+- `src/main/java/TaskRepository.java` - SQLite CRUD operations.
 
-## One-time driver file
+## Run in IntelliJ (recommended for students)
 
-Place the SQLite JDBC jar in `lib/` with this filename:
+1. Open this folder as a project in IntelliJ.
+2. Wait for Maven import to finish.
+3. Open `src/main/java/Main.java`.
+4. Click the green **Run** button next to `main`.
 
-`lib/sqlite-jdbc-3.46.0.0.jar`
-
-> If your environment blocks downloads, copy this jar from your teaching machine into the `lib` folder before distributing the starter.
-
-## Run in IntelliJ
-
-1. Open this folder as a project.
-2. Add `lib/sqlite-jdbc-3.46.0.0.jar` as a module dependency if IntelliJ doesn't auto-detect it.
-3. Run `Main`.
-
-Expected output at start:
-
-- `Connected to database`
-- `Table ready`
+That's it. The database and table are created automatically.
 
 ## Run from terminal
 
 ```bash
-./run.sh
+mvn -q compile exec:java
 ```
 
-The database file (`app.db`) is created automatically in the project root.
+## Expected startup output
 
-
-## Troubleshooting: "No suitable driver found"
-
-If you see:
-
-`java.sql.SQLException: No suitable driver found for jdbc:sqlite:app.db`
-
-then the SQLite JDBC jar is not on the runtime classpath.
-
-- IntelliJ: ensure `lib/sqlite-jdbc-3.46.0.0.jar` is added as a module dependency.
-- Terminal: run `./run.sh` (it includes the jar in `-cp`).
-- If needed, reload/sync the IntelliJ project after adding the jar.
+- `Connected to database`
+- `Table ready`
